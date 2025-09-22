@@ -3,6 +3,8 @@ package http
 import (
 	stdhttp "net/http"
 
+	"github.com/gin-gonic/gin"
+
 	"subscription_system_app/internal/domain"
 	"subscription_system_app/internal/usecase"
 )
@@ -18,16 +20,11 @@ func NewUserHandler(creator *usecase.UserCreator) *UserHandler {
 }
 
 // HandleCreate registers a user using the POST /users endpoint.
-func (h *UserHandler) HandleCreate(w stdhttp.ResponseWriter, r *stdhttp.Request) {
-	if r.Method != stdhttp.MethodPost {
-		w.WriteHeader(stdhttp.StatusMethodNotAllowed)
-		return
-	}
-
+func (h *UserHandler) HandleCreate(c *gin.Context) {
 	if h.creator != nil {
 		// Placeholder: integrate request parsing when implementing HTTP body handling.
 		_ = h.creator.Create(domain.User{})
 	}
 
-	w.WriteHeader(stdhttp.StatusCreated)
+	c.Status(stdhttp.StatusCreated)
 }

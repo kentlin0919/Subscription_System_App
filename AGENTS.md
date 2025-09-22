@@ -33,10 +33,7 @@
 
 ## 基本檔案結構
 
-yourapp/
-├─ cmd/
-│  └─ api/
-│     └─ main.go            // 組裝應用、載入環境與啟動伺服器
+yourapp/          // 組裝應用、載入環境與啟動伺服器
 ├─ internal/
 │  ├─ domain/               // 實體與領域介面（純 Go，無外部依賴）
 │  │  └─ user.go
@@ -54,6 +51,7 @@ yourapp/
 │        └─ logger.go
 ├─ pkg/                     // 可重用套件（非業務），或跨專案共用工具
 └─ go.mod
+└─ main.go
 
 
 ## 回覆語言
